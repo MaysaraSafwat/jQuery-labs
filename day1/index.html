@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        section {
+            padding: 5%;
+            text-align: center;
+        }
+        .slider-container {
+            width: 60%;
+            margin: 0 auto;
+            display: flex;
+            overflow: hidden;
+
+        }
+        .slider-container img {
+            width: 100%;
+            margin-bottom: 1%;
+        }
+        .btn {
+            padding:1% 2%;
+            background-color: white;
+            border: 2px solid lightcoral;
+            color: lightcoral;
+            border-radius: 20px;
+            width: 200px;
+
+        }
+        .card-container
+        {
+            display: flex;
+            overflow: hidden;
+            width: 90%;
+            align-items: center;
+            justify-content: space-around;
+        } 
+        .card {
+            padding: 2%;
+        }
+        .card img {
+            width: 100%;
+            margin-bottom: 3%;
+        }
+        .card p {
+            padding: 2%;
+            background-color: lavender;
+            line-height: 1em;
+             border-radius: 20px;
+        }
+
+        </style>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section>
+        <h2>
+            Task - 1
+        </h2>
+        <div class="slider-container">
+           <img src="https://images.unsplash.com/photo-1490735891913-40897cdaafd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="sliderimg"/>
+           <img src="https://images.unsplash.com/photo-1506102383123-c8ef1e872756?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="sliderimg"/>
+           <img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="sliderimg"/>
+           
+        </div>
+        <button class="stop-slider btn">stop slider</button>
+    </section>
+    <hr>
+    <section>
+        <h2>Task - 2</h2>
+        <div class="card-container">
+           <div class="card">
+              <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"/>
+              <button class="btn">See more</button>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, molestias. Laudantium, rerum! Reprehenderit, aperiam maiores porro aut quos ducimus dolores ipsum laudantium. Ad temporibus, odit ex quidem rem perferendis quisquam.</p>
+           </div>
+
+           <div class="card">
+            <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"/>
+            <button class="btn">See more</button>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, molestias. Laudantium, rerum! Reprehenderit, aperiam maiores porro aut quos ducimus dolores ipsum laudantium. Ad temporibus, odit ex quidem rem perferendis quisquam.</p>
+         </div>
+
+         <div class="card">
+            <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"/>
+            <button class="btn">See more</button>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, molestias. Laudantium, rerum! Reprehenderit, aperiam maiores porro aut quos ducimus dolores ipsum laudantium. Ad temporibus, odit ex quidem rem perferendis quisquam.</p>
+         </div>
+        </div>
+    </section>
+
+
+
+
+<script>
+    //TASK1
+var myInterval = setInterval(function() {
+      $(".slider-container > img:first")
+        .fadeOut(1500)
+        .next()
+        .fadeIn(1500)
+        .end()
+        .appendTo(".slider-container");
+ }, 3000);
+
+$(".stop-slider").on("click" , function () {
+   clearInterval(myInterval);
+})
+
+  //TASK2
+$("document").ready(function(){
+    $(".card p").slideUp(1)
+    $(".card button").on("click" , function(){
+        $(this).next().slideToggle(100);
+    })
+})
+</script>
+</body>
+</html>
