@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 2%;
+            text-align: center;
+        }
+        #draggable { width: 150px; height: 150px; padding: 0.5em; }
+        #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            padding: 4%;
+            text-align: center;
+            align-items: center;
+        }
+        .circle{
+            height: 250px;
+            width: 250px;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .bunny {
+            background-color: yellow;
+            width: 150px;
+            height: 150px;
+        }
+        .bunny img {
+            width: 90%;
+            height: 90%;
+
+        }
+        .fade {
+            transition: opacity 3s;  
+            opacity: 0;
+        }
+        .wiggle{
+            animation: shake 2s;
+        }
+        @keyframes shake {
+        0%{transform: translateX(3px)}
+        100%{transform: translateX(-6px);}
+        }
+    </style>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    
+</head>
+<body>
+    <h2>Into the Void</h2>
+    <div class="container">
+    <div id="droppable" class="ui-widget-header">
+        
+        <p class="circle">
+        </p>
+    </div>
+
+    <div class="bunny">
+        <img id="draggable" class="ui-widget-content" src="./scared_bugs_bunny.jpg"/>
+    </div>
+    
+    </div>
+    <script>
+        $( function() {
+          $( "#draggable" ).draggable({
+            start: function( event, ui ) {
+                $(this).effect("shake")
+            }
+        ,
+            stop: function(event, ui){
+            //  $(this).toggle("drop")
+            $(this).addClass("fade")
+          }
+          });
+          $( "#droppable" ).droppable({
+            drop: function( event, ui ) {
+              $("#draggable")
+                .addClass( "ui-highlight" )
+                .find( "p" )
+                  .html( "Dropped!" );
+            }
+          });
+        } );
+    </script>
+</body>
+</html>
